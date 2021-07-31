@@ -1,0 +1,10 @@
+CREATE TABLE contato (
+  codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+	codigo_cliente BIGINT(20) NOT NULL,
+	nome VARCHAR(50) NOT NULL,
+	email VARCHAR(100) NOT NULL,
+	telefone VARCHAR(20) NOT NULL,
+  FOREIGN KEY (codigo_cliente) REFERENCES cliente(codigo)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
