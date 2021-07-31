@@ -44,7 +44,7 @@ public class ClienteRest {
 	
 	
 	@PostMapping("pesquisar")
-	public ResponseEntity<Page<ClienteDTO>> listar(@RequestBody FiltroClienteDTO filtro, Pageable pageable){
+	public ResponseEntity<Page<ClienteDTO>> pesquisar(@RequestBody FiltroClienteDTO filtro, Pageable pageable){
 		return ResponseEntity.ok(clienteService.listarComFiltro(filtro,pageable));
 	}
 	

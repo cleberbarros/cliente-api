@@ -14,6 +14,7 @@ import io.platformbuilders.clienteapi.model.dto.ClienteDTO;
 import io.platformbuilders.clienteapi.model.dto.FiltroClienteDTO;
 import io.platformbuilders.clienteapi.repository.ClienteRepository;
 
+
 @Service
 public class ClienteService {
 
@@ -39,9 +40,6 @@ public class ClienteService {
 
 	    cliente.getContatos().forEach(c -> c.setCliente(cliente)); //APENDICE AULA 22.25
 		
-//		pessoa = pessoaRepository.save(pessoa);
-//		
-//		return pessoa;
 	    return clienteRepository.save(cliente);
 		
 	}
@@ -71,7 +69,6 @@ public class ClienteService {
 
 	public Page<ClienteDTO> listarComFiltro( FiltroClienteDTO filtro, Pageable pageable) {
 		
-	
 		
 		return clienteRepository.listarPorFiltro(filtro, pageable).map(clienteMapper::toDTO);
 		
