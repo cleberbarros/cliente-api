@@ -16,6 +16,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+		<spring-fox.version>2.9.2</spring-fox.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -71,6 +72,13 @@
 			    <groupId>org.springframework.boot</groupId>
 			    <artifactId>spring-boot-starter-test</artifactId>
 			    <scope>test</scope>
+			</dependency>
+		    
+		    <!-- SpringFox -->	
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${spring-fox.version}</version>
 			</dependency>
 	</dependencies>
 
