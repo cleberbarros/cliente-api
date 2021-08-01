@@ -45,6 +45,11 @@ public class ClienteRest {
 	
 	@PostMapping("pesquisar")
 	public ResponseEntity<Page<ClienteDTO>> pesquisar(@RequestBody FiltroClienteDTO filtro, Pageable pageable){
+		
+		if(clienteService.listarComFiltro(filtro,pageable).isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		
 		return ResponseEntity.ok(clienteService.listarComFiltro(filtro,pageable));
 	}
 	
