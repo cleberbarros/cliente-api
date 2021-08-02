@@ -40,7 +40,7 @@ class ClienteApiTestesIntegracao {
 
     @Test
     public void RequisicaoGet_para_CodigoExistente() throws Exception {
-        this.mockMvc.perform(get("/cliente/8"))
+        this.mockMvc.perform(get("/cliente/1"))
                     .andDo(print())
                     .andExpect(status().isOk());
      
@@ -60,13 +60,14 @@ class ClienteApiTestesIntegracao {
     	Contato contato = new Contato();
     	List<Contato> contatos = new ArrayList<>();
     	
-    	this.cliente.setNome("Maria Maezinha linda");
-    	this.cliente.setCpf("03414849461");
+    	this.cliente.setNome("Carla Beatriz Paes de Barros");
+    	this.cliente.setCpf("03639718402");
     	this.cliente.setAtivo(true);
     	
     	
-    	contato.setNome("José");
-    	contato.setEmail("jose@servoDeus.com.br");
+    	
+    	contato.setNome("Maria Ednalda");
+    	contato.setEmail("dinha@servoDeus.com.br");
     	contato.setTelefone("8888888888");
     	contato.setCliente(cliente);
     	
@@ -88,9 +89,8 @@ class ClienteApiTestesIntegracao {
     @Test
     public void RequisicaoPost_Pesquisa() throws Exception {
     	
-    	//filtro.setCidade("Juaz");
-    	filtro.setNome("cl");
-    	
+    	filtro.setCidade("Petrolina");
+    	    	
     	
     	this.mockMvc.perform(MockMvcRequestBuilders
     			  .post("/cliente/pesquisar")
@@ -109,14 +109,15 @@ class ClienteApiTestesIntegracao {
     	Contato contato = new Contato();
     	List<Contato> contatos = new ArrayList<>();
     	
-    	clienteDadosNovos.setNome("Maria Mãe de Deus e Jesus");
+    	clienteDadosNovos.setNome("Cléber Marcelo Alves de Barros");
     	clienteDadosNovos.setAtivo(true);
     	clienteDadosNovos.setCpf("03414849461");
     	
-    	contato.setCodigo(10L);
-    	contato.setNome("José");
-    	contato.setEmail("jose@servoDeus.com.br");
-    	contato.setTelefone("8888888888");
+    	
+    	contato.setCodigo(1L);
+    	contato.setNome("Marcos Henrique Pereira Goes");
+    	contato.setEmail("marcosHenri@marcos.com.br");
+    	contato.setTelefone("87-98815-0222");
     	contato.setCliente(clienteDadosNovos);
 
     	
@@ -124,7 +125,7 @@ class ClienteApiTestesIntegracao {
     	clienteDadosNovos.setContatos(contatos);
 
     	this.mockMvc.perform( MockMvcRequestBuilders
-          .put("/cliente/{codigo}", 12)
+          .put("/cliente/{codigo}", 1)
           .content(asJsonString(clienteDadosNovos))
           .contentType(MediaType.APPLICATION_JSON)
           .accept(MediaType.APPLICATION_JSON))
