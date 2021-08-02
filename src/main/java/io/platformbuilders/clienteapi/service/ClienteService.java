@@ -29,16 +29,13 @@ public class ClienteService {
 		
 		
 		if(! clienteRepository.existsById(codigo)) {
-			throw new EmptyResultDataAccessException(1);  //lançando essa exceção que já esta tratada em AlgamoneyExceptionHandler
-			//return ResponseEntity.notFound().build(); //esse outro foi como Thiago fez na oficia rest
+			throw new EmptyResultDataAccessException(1);  
 		}
 		
-		/*preciso fazer pessoa.setId(codigo) senão o hibernate vai receber a pessoa vindo no json e no
-		 * sem o codigo e vai entender que será um novo pessoa e vai adicionar ao inves de atualizar*/ 
-		
+		 
 		cliente.setCodigo(codigo);
 
-	    cliente.getContatos().forEach(c -> c.setCliente(cliente)); //APENDICE AULA 22.25
+	    cliente.getContatos().forEach(c -> c.setCliente(cliente)); 
 		
 	    return clienteRepository.save(cliente);
 		
@@ -62,7 +59,7 @@ public class ClienteService {
 		return clienteSalvo.get();
 	}
 	public Cliente salvar(Cliente cliente) {
-		cliente.getContatos().forEach(c -> c.setCliente(cliente)); //APENDICE AULA 22.25
+		cliente.getContatos().forEach(c -> c.setCliente(cliente)); 
 		
 		return clienteRepository.save(cliente);
 	}

@@ -37,7 +37,9 @@ public class ClienteDTO {
 	
 
 	public int getIdade() {
+		
 		return Period.between(dtNascimento, LocalDate.now()).getYears();
+	  	
 	}
 
 

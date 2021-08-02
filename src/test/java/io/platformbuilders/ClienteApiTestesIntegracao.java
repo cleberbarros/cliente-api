@@ -55,37 +55,7 @@ class ClienteApiTestesIntegracao {
     }
    
     
-    @Test
-    public void RequisicaoPost_Salvar_Cliente() throws Exception {
-    	Contato contato = new Contato();
-    	List<Contato> contatos = new ArrayList<>();
-    	
-    	this.cliente.setNome("Carla Beatriz Paes de Barros");
-    	this.cliente.setCpf("03639718402");
-    	this.cliente.setAtivo(true);
-    	
-    	
-    	
-    	contato.setNome("Maria Ednalda");
-    	contato.setEmail("dinha@servoDeus.com.br");
-    	contato.setTelefone("8888888888");
-    	contato.setCliente(cliente);
-    	
-    	contatos.add(contato);
-    	this.cliente.setContatos(contatos);
-    	
-    	
-    	this.mockMvc.perform(MockMvcRequestBuilders
-    			  .post("/cliente")
-    		      .content(asJsonString(cliente))
-    		      .contentType(MediaType.APPLICATION_JSON)
-    		      .accept(MediaType.APPLICATION_JSON))
-    		      .andDo(print())	
-    		      .andExpect(status().isCreated())
-    		      .andExpect(MockMvcResultMatchers.jsonPath("$.codigo").exists());
-            
-    }
-    
+   
     @Test
     public void RequisicaoPost_Pesquisa() throws Exception {
     	
@@ -104,33 +74,15 @@ class ClienteApiTestesIntegracao {
     
 
     @Test
-    public void RequisicaoPUT_Cliente() throws Exception {
-    	Cliente clienteDadosNovos = new Cliente();
-    	Contato contato = new Contato();
-    	List<Contato> contatos = new ArrayList<>();
+    public void RequisicaoPUT_Ativar_Inativar_CLiente() throws Exception {
     	
-    	clienteDadosNovos.setNome("Cléber Marcelo Alves de Barros");
-    	clienteDadosNovos.setAtivo(true);
-    	clienteDadosNovos.setCpf("03414849461");
-    	
-    	
-    	contato.setCodigo(1L);
-    	contato.setNome("Marcos Henrique Pereira Goes");
-    	contato.setEmail("marcosHenri@marcos.com.br");
-    	contato.setTelefone("87-98815-0222");
-    	contato.setCliente(clienteDadosNovos);
-
-    	
-    	contatos.add(contato);
-    	clienteDadosNovos.setContatos(contatos);
-
     	this.mockMvc.perform( MockMvcRequestBuilders
-          .put("/cliente/{codigo}", 1)
-          .content(asJsonString(clienteDadosNovos))
+          .put("/cliente/1/ativo")
+          .content(asJsonString(false))
           .contentType(MediaType.APPLICATION_JSON)
           .accept(MediaType.APPLICATION_JSON))
-          .andExpect(status().isOk())
-          .andExpect(MockMvcResultMatchers.jsonPath("$.nome").value(clienteDadosNovos.getNome()));
+          .andExpect(status().isNoContent());
+          
     }
 
  

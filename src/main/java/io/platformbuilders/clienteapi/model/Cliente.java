@@ -58,11 +58,9 @@ public class Cliente {
 	@Embedded
 	private Endereco endereco;
 	
-	@JsonIgnoreProperties("cliente") //APENDICE AULA 22.24 ignorando a propriedade pessoa que esta lá em contato e assim evitando recursividade
-	//APENDICE AULA 22.23
+	@JsonIgnoreProperties("cliente")
 	@Valid
-	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)  /*com isso o hibernate vai remover o que estive na base de dados mas não estive mais na lista. 
-										   então caso não passe o contato ele vai apagar o que tiver no banco*/	
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)  
 	private List<Contato> contatos;
 
 }
